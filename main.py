@@ -1,3 +1,5 @@
+import time
+
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 from pyspark.ml.feature import StopWordsRemover
@@ -6,6 +8,8 @@ spark = SparkSession \
     .builder \
     .appName("Projet") \
     .master("local[*]") \
+    .config("spark.driver.bindAddress", "localhost") \
+    .config("spark.ui.port", "4050") \
     .getOrCreate()
 
 csvFile = './full.csv'
@@ -93,6 +97,5 @@ print("#############")
 print("25 MOST USED WORD IN COMMIT MESSAGE")
 print("#############")
 most_used_word_in_commit_message(df)
-
 
 spark.stop()
