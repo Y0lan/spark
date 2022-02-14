@@ -98,4 +98,5 @@ print("25 MOST USED WORD IN COMMIT MESSAGE")
 print("#############")
 most_used_word_in_commit_message(df)
 
+time.sleep(1000)
 spark.stop()
